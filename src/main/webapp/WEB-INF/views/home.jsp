@@ -20,7 +20,7 @@
 			<div class="container">
 				<div class="spacer">
 					<div class="row">
-						<h3>About Us</h3>
+						<h3><spring:message code="home.about.us" text="About Us"/></h3>
 						<p>
 							The Top Rated TV Shows list only includes TV series and TV mini
 							series.<br /> The list is ranked by a formula which includes the

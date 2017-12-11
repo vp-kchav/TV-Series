@@ -11,7 +11,6 @@
 		<put-attribute name="navigation" value="/WEB-INF/tiles/template/navigation.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp" />
-		<put-attribute name="loginpop" value="/WEB-INF/tiles/template/loginpop.jsp" />
 	</definition>
 	<definition name="webRegister" extends="baseLayout">
 		<put-attribute name="body" value="/WEB-INF/flows/webRegister.jsp" />

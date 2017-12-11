@@ -97,9 +97,5 @@
 	<div class="footer">
 		<tiles:insertAttribute name="footer" />
 	</div>
-	<!-- Modal -->
-	<div id="loginpop" class="modal fade">
-		<tiles:insertAttribute name="loginpop" />
-	</div>
 </body>
 </html>

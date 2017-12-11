@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -19,49 +20,18 @@
 						<li>
 						<section>
 							<div class="pull-right" style="padding-right:50px">
-								<a href="?language=en">English</a>|<a href="?language=fr">France</a>
+								<a href="?language=en">English</a>|<a href="?language=kh">ខ្មែរ</a>
 							</div>
 						</section>
 						</li>
 						<li><a href="<c:url value="/index"/>"><spring:message code="menu.home" text="Home"/></a></li>
-						<li><a href="<c:url value="/agents"/>"><spring:message code="menu.agent" text="Agents"/></a></li>
-						<c:if test="${not empty sessionScope.currentUser}">
-							<c:choose>
-								<c:when test="${sessionScope.currentUser.role.id == 4}">
-									<li><a href="<c:url value="/property/requests"/>"><spring:message code="menu.pending" text="Pending request"/></a></li>
-								</c:when>
-							</c:choose>
-							<c:choose>
-								<c:when test="${sessionScope.currentUser.role.id != 1}">
-									<li><a href="<c:url value="/property/uploadProperty"/>"><spring:message code="menu.upload" text="Upload property"/></a></li>
-									<li><a href="<c:url value="/bookappointment/list"/>"><spring:message code="menu.appointmens" text="Appointmens"/></a></li>
-								</c:when>
-							</c:choose>
-							<li><a href="<c:url value="/order/list"/>"><spring:message code="menu.orders" text="Orders"/></a></li>
-							<c:if test="${sessionScope.currentUser.role.id == 4}">
-								<li><a href="<c:url value="/register"/>"><spring:message code="menu.register" text="Register"/></a></li>
-							</c:if>
-						</c:if>
 						<c:choose>
 							<c:when test="${sessionScope.currentUser != null}">
-								<li><a> <c:choose>
-											<c:when test="${sessionScope.currentUser.role.id == 1}">
-												BUYER
-											</c:when>
-											<c:when test="${sessionScope.currentUser.role.id ==2}">
-												SELLER
-											</c:when>
-											<c:when test="${sessionScope.currentUser.role.id ==3}">
-												AGENT
-											</c:when>
-											<c:otherwise>
-												ADMIN
-											</c:otherwise>
-										</c:choose> <span>${sessionScope.currentUser.firstName}</span> <span>${sessionScope.currentUser.lastName}</span></a></li>
 								<li>
-									<form method="get" action="<c:url value="/logout"/>">
-										<button id="logout"><spring:message code="menu.logout" text="Log Out"/></button>
-									</form>
+								<span>${sessionScope.currentUser.username}</span>
+								</li>
+								<li>
+									<a href="<c:url value="/logout"/>"><spring:message code="menu.logout" text="Log Out"/></a>
 								</li>
 							</c:when>
 							<c:otherwise>

@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import mum.edu.domain.AbstractLongEntity;
@@ -26,55 +27,80 @@ public class Season extends AbstractLongEntity {
 
     public Season() {
     }
-    
+
+    private String name;
+
+
     private String summary;
-    
+
     private int year;
+
+    private TVSeries series;
     
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "series_id")
+    public TVSeries getSeries() {
+        return series;
+    }
+
+    public void setSeries(TVSeries series) {
+        this.series = series;
+    }
+
     @Lob
     @Column(length = 10485760) // 10 MB 
-    private byte[] postet;
+    private byte[] poster;
 
     private List<Episode> episodes = new ArrayList<Episode>();
-    
-    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-    @JoinColumn(name="season_id")
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "season")
     public List<Episode> getEpisodes() {
         return episodes;
     }
-    
+
     public void setEpisodes(List<Episode> episodes) {
         this.episodes = episodes;
     }
 
-
+    public void addEpisode(Episode episode) {
+        episodes.add(episode);
+        episode.setSeason(this);
+    }
+    
+    public void removeEpisode(Episode episode) {
+        episode.setSeason(null);
+        episodes.remove(episode);
+    }
+    
     public String getSummary() {
         return summary;
     }
 
-    
     public void setSummary(String summary) {
         this.summary = summary;
     }
 
-    
     public int getYear() {
         return year;
     }
 
-    
     public void setYear(int year) {
         this.year = year;
     }
 
-    
-    public byte[] getPostet() {
-        return postet;
+    public byte[] getPoster() {
+        return poster;
     }
 
-    
-    public void setPostet(byte[] postet) {
-        this.postet = postet;
+    public void setPoster(byte[] postet) {
+        this.poster = postet;
     }
 }
-

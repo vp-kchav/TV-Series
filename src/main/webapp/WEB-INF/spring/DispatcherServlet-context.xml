@@ -9,8 +9,9 @@
 		http://www.springframework.org/schema/webflow-config http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.3.xsd">
 
 	<import resource="beans-context.xml" />
-	<import resource="hibernate-context.xml"/>
-	<!-- <mvc:annotation-driven /> -->
+<!-- 	<import resource="hibernate-context.xml"/> -->
+	<import resource="jpa-context.xml"/>
+<!-- 	<mvc:annotation-driven /> -->
 	<mvc:annotation-driven validator="validator" />
 
 <!-- 	<bean id="conversionService" -->
