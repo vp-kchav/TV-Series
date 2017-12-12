@@ -86,7 +86,7 @@ public class AbstractTV extends AbstractLongEntity {
         this.casts = casts;
     }
     
-    @ElementCollection()
+    @ElementCollection(fetch = FetchType.EAGER)
     public List<String> getGenres() {
         return genres;
     }
@@ -115,5 +115,13 @@ public class AbstractTV extends AbstractLongEntity {
     
     public static long getSerialversionuid() {
         return serialVersionUID;
+    }
+    
+    public String buildGeneresAsString() {
+        String result = "";
+        for(String genere : this.genres) {
+            result += genere + " ";
+        }
+        return result.trim();
     }
 }

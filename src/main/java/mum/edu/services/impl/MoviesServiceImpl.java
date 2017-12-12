@@ -56,20 +56,17 @@ public class MoviesServiceImpl implements MoviesService {
 
 
     public List<AbstractTV> findByRate(int rate) {
-//        return moviesDao.findByRate(rate);
-        return null;
+        return moviesDao.findByRate(rate);
     }
 
 
     public List<AbstractTV> findByArtist(String artistName) {
-//        return moviesDao.findByArtist(artistName);
-        return null;
+        return moviesDao.findByArtist(artistName);
     }
 
 
     public List<AbstractTV> findByDirector(String directorName) {
-//        return moviesDao.findByDirector(directorName);
-        return null;
+        return moviesDao.findByDirector(directorName);
     }
 
 

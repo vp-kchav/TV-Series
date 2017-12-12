@@ -29,6 +29,6 @@ public interface MoviesRepository extends CrudRepository<AbstractTV, Long> {
     @Query(value = "SELECT tv FROM AbstractTV tv inner join tv.director d where d.name like CONCAT('%',:directorName,'%')")
     List<AbstractTV> findByDirector(@Param("directorName") String directorName);
     
-    @Query(value = "SELECT tv FROM AbstractTV tv Where tv.name like :text OR tv.descirption like CONCAT('%',:text,'%')")
+    @Query(value = "SELECT tv FROM AbstractTV tv Where tv.name like CONCAT('%',:text,'%') OR tv.descirption like CONCAT('%',:text,'%')")
     List<AbstractTV> findWithNameAndDescription(@Param("text") String text);
 }

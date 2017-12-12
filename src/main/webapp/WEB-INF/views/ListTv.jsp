@@ -105,7 +105,8 @@
 <%-- 												<a href="<c:url value="/property/propertyList?id=${property.id}"/>"></a> --%>
 												${movie.name}
 											</h4>
-											<p> 	${movie.descirption}</p>
+											<p> ${movie.descirption}</p>
+											<p>	${movie.buildGeneresAsString()}</p>
 											<p><em>Director:</em> ${movie.director.name} </p>
 											<div class="listing-detail">
 												<p>

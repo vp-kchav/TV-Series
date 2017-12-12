@@ -44,8 +44,8 @@ public class HomeController {
             UserDetails currentUser = (UserDetails) principal;
             model.addAttribute("currentUser", currentUser);
         }
-        deployData();
-        deployDataMovie();
+//        deployData();
+//        deployDataMovie();
         List<AbstractTV> listMovies = moviesService.getAll();
         model.addAttribute("listMovies",listMovies);
         return "ListTv";
