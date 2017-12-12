@@ -39,7 +39,9 @@ public class AbstractTV extends AbstractLongEntity {
     private String descirption;
     
     private int rating;
-  
+    
+    private Studio studio;
+
     private List<Artist> casts = new ArrayList<Artist>();
     
     private List<String> comments = new ArrayList<String>();
@@ -49,6 +51,16 @@ public class AbstractTV extends AbstractLongEntity {
     
     
     private Director director;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "studio_id")
+    public Studio getStudio() {
+        return studio;
+    }
+
+    public void setStudio(Studio studio) {
+        this.studio = studio;
+    }
     
     @ElementCollection
     public List<String> getComments() {
