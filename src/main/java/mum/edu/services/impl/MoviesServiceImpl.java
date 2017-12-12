@@ -44,4 +44,37 @@ public class MoviesServiceImpl implements MoviesService {
         return (List<AbstractTV>) moviesDao.findAll();
     }
 
+
+    public List<AbstractTV> findByGenre(String genre) {
+        return moviesDao.findByGenres(genre);
+    }
+
+
+    public List<AbstractTV> findByName(String name) {
+        return moviesDao.findByName(name);
+    }
+
+
+    public List<AbstractTV> findByRate(int rate) {
+//        return moviesDao.findByRate(rate);
+        return null;
+    }
+
+
+    public List<AbstractTV> findByArtist(String artistName) {
+//        return moviesDao.findByArtist(artistName);
+        return null;
+    }
+
+
+    public List<AbstractTV> findByDirector(String directorName) {
+//        return moviesDao.findByDirector(directorName);
+        return null;
+    }
+
+
+    public List<AbstractTV> findWithNameAndDescription(String text) {
+        return moviesDao.findWithNameAndDescription(text);
+    }
+
 }

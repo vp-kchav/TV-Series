@@ -45,7 +45,7 @@ public class AbstractTV extends AbstractLongEntity {
     private List<String> comments = new ArrayList<String>();
     
 
-    private List<String> genes = new ArrayList<String>();
+    private List<String> genres = new ArrayList<String>();
     
     
     private Director director;
@@ -86,13 +86,13 @@ public class AbstractTV extends AbstractLongEntity {
         this.casts = casts;
     }
     
-    @ElementCollection
-    public List<String> getGenes() {
-        return genes;
+    @ElementCollection()
+    public List<String> getGenres() {
+        return genres;
     }
     
-    public void setGenes(List<String> genes) {
-        this.genes = genes;
+    public void setGenres(List<String> genres) {
+        this.genres = genres;
     }
     
     public int getRating() {

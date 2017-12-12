@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page session="true" %>
 
 		<div class="navbar-inverse" role="navigation">
@@ -28,10 +29,15 @@
 						<c:choose>
 							<c:when test="${sessionScope.currentUser != null}">
 								<li>
-								<span>${sessionScope.currentUser.username}</span>
+								<sec:authorize access ="hasRole('ROLE_ADMIN')">
+									<a href="<c:url value="/addmovies"/>"><spring:message code="menu.add.movie" text="Add Movies"/></a>
+								</sec:authorize>
 								</li>
 								<li>
 									<a href="<c:url value="/logout"/>"><spring:message code="menu.logout" text="Log Out"/></a>
+								</li>
+								<li>
+									<span>${sessionScope.currentUser.username}</span>
 								</li>
 							</c:when>
 							<c:otherwise>

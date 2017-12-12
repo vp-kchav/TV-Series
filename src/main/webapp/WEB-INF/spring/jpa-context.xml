@@ -20,7 +20,7 @@
 
 	<jpa:repositories base-package="mum.edu.repository"
 		entity-manager-factory-ref="entityManager" />
-	<context:property-placeholder location="classpath:applicationjpa.properties" />
+	<context:property-placeholder location="classpath:application.properties" />
 
 	<bean id="entityManager"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -40,6 +40,7 @@
 				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
 				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
 				<prop key="hibernate.hbm2ddl.import_files">initial_data.sql</prop>
+				<prop key="hibernate.show_sql">true</prop>
 			</props>
 		</property>
 	</bean>

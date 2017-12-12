@@ -14,5 +14,17 @@ public interface MoviesService {
     AbstractTV save(AbstractTV serie);
     
     List<AbstractTV> getAll();
+    
+    List<AbstractTV> findByGenre(String genre);
+    
+    List<AbstractTV> findByName(String name);
+    
+    List<AbstractTV> findByRate(int rate);
+    
+    List<AbstractTV> findByArtist(String artistName);
+    
+    List<AbstractTV> findByDirector(String directorName);
+    
+    List<AbstractTV> findWithNameAndDescription(String text);
 
 }

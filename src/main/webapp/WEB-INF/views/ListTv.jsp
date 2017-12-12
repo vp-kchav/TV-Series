@@ -19,18 +19,18 @@
 		<!-- banner -->
 		<div class="container">
 			<div class="properties-listing spacer">
-				<form:form modelAttribute="searchDto" role="form"	action="property/search" method="POST">
+				<form:form modelAttribute="searchDto" role="form"	action="searchMovie" method="POST">
 					<div class="row">
 						<div class="col-lg-3 col-sm-4 ">
 							<div class="search-form">
 								<h4>
 									<span class="glyphicon glyphicon-search"></span> Search Movies
 								</h4>
-								<input type="text" name="textSearch" class="form-control" placeholder="Search of Properties">
+								<input type="text" name="textSearch" class="form-control" placeholder="Search your movies">
 								<div class="row">
 									<div class="col-lg-12">
-										<select name="purpose" class="form-control">
-											<option value="rent,sell">-- search type --</option>
+										<select name="type" class="form-control">
+											<option value="all">-- search type --</option>
 											<option value="name">Name</option>
 											<option value="genre">Genre</option>
 											<option value="rate">Rate</option>
@@ -88,11 +88,19 @@
 									<!-- properties -->
 									<div class="col-lg-4 col-sm-6">
 										<div class="properties">
+											<c:if test="${movie.getClass().simpleName == 'TVSeries'}">
 											<div class="image-holder">
-												<img
-													src="<c:url value="/resources/images/movie1.jpg"/>"
+												<img src="<c:url value="/resources/images/movie1.jpg"/>"
 													class="img-responsive" alt="movies">
 											</div>
+											</c:if>
+											<c:if test="${movie.getClass().simpleName == 'Movie'}">
+											<div class="image-holder">
+												<img src="<c:url value="/resources/images/movie2.jpg"/>"
+													class="img-responsive" alt="movies">
+											</div>
+											</c:if>
+											<p><strong>${movie.getClass().simpleName}</strong></p>
 											<h4>
 <%-- 												<a href="<c:url value="/property/propertyList?id=${property.id}"/>"></a> --%>
 												${movie.name}
@@ -108,13 +116,15 @@
 														</span>
 												</p>			
 											</div>
-											<div class="listing-detail">
-												<p><em>No of Seasons :</em> 
-														<span data-toggle="tooltip" data-placement="bottom" 
-														data-original-title="Seasons">${movie.seasons.size()} 
-												</span>
-												</p>
-											</div>
+											<c:if test="${movie.getClass().simpleName == 'TVSeries'}">
+												<div class="listing-detail">
+													<p><em>No of Seasons :</em> 
+															<span data-toggle="tooltip" data-placement="bottom" 
+															data-original-title="Seasons">${movie.seasons.size()} 
+													</span>
+													</p>
+												</div>
+											</c:if>
 											<a class="btn btn-primary" href="<c:url value="/property/propertyList?id=${property.id}"/>">View Details</a>
 										</div>
 									</div>
