@@ -29,13 +29,21 @@ public class Season extends AbstractLongEntity {
     }
 
     private String name;
-
+    
+    @Lob
+    @Column(length = 10485760) // 10 MB 
+    private byte[] poster;
 
     private String summary;
 
     private int year;
 
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "series_id")
     private TVSeries series;
+    
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "season")
+    private List<Episode> episodes = new ArrayList<Episode>();
     
     public String getName() {
         return name;
@@ -45,8 +53,7 @@ public class Season extends AbstractLongEntity {
         this.name = name;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "series_id")
+    
     public TVSeries getSeries() {
         return series;
     }
@@ -54,14 +61,9 @@ public class Season extends AbstractLongEntity {
     public void setSeries(TVSeries series) {
         this.series = series;
     }
+    
 
-    @Lob
-    @Column(length = 10485760) // 10 MB 
-    private byte[] poster;
-
-    private List<Episode> episodes = new ArrayList<Episode>();
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "season")
+   
     public List<Episode> getEpisodes() {
         return episodes;
     }

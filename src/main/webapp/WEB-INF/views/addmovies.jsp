@@ -12,7 +12,7 @@
 	
 	<div class="inside-banner">
 		<div class="container">
-			<span class="pull-right"><a href="/home">Home</a> / Add Movie</span>
+			<span class="pull-right"><a href="home">Home</a> / Add Movie</span>
 			<h2><spring:message code="add.new.movie" text="Add New Movies"/></h2>
 		</div>
 	</div>
@@ -26,23 +26,34 @@
 							<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>${msg}
 						</div>
 					</c:if> --%>
-					<form:form modelAttribute="newMovie" action="/saveMovie" method="POST">
+					<form:form modelAttribute="newMovie" action="saveMovie" method="POST"  enctype="multipart/form-data">
 					<div class="form-group row">
-							<div class="col-lg-6">
+							<div class="col-lg-12">
 								<spring:message code="form.movie.name"   text="Name :" var="name"/> 
 								<form:input class="form-control" path="name"  placeholder="${name}"/> 
 								<form:errors path="name"/>
 							</div>
-							<div class="col-lg-6">
+							<div class="col-lg-12">
 								<spring:message code="form.movie.descirption"  text="Descirption:" var="descirption"/> 
 								<form:input class="form-control" path="descirption"  placeholder="${descirption}" />
 								<form:errors path="descirption"/>
 							</div>
-							<div class="col-lg-6">
+							<div class="col-lg-12">
 								<spring:message code="form.movie.rating"  text="Rating:" var="rating"/> 
 								<form:input class="form-control" path="rating"  placeholder="${rating}" />
-								<form:errors path="descirption"/>
+								<form:errors path="rating"/>
 							</div>
+							<div class="col-lg-12">
+								<form:select  class="form-control" items="${directors}" path="director.id" itemLabel="name" itemValue="id"/>
+							</div>
+							<div class="form-group row" id="addImg">
+								<div class="col-lg-12">
+									<form:input id="addImg" path="image" type="file" multiple="multiple" required="required"/>
+								</div>
+							</div>
+<!-- 							<div class="col-lg-12"> -->
+<%-- 								<form:select  class="form-control" items="${artists}" path="casts.id" itemLabel="name" itemValue="id"/> --%>
+<!-- 							</div> -->
 						</div>
 <!-- 						<div class="form-group"> -->
 <%-- 							<form:select  class="form-control" items="${roles}" path="role.id" itemLabel="roleName" itemValue="id"/> --%>

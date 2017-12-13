@@ -32,6 +32,8 @@ public class Episode extends AbstractLongEntity {
     @Temporal(TemporalType.DATE)
     private Date dateAired;
 
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "season_id")
     private Season season;
 
     private String name;
@@ -44,8 +46,7 @@ public class Episode extends AbstractLongEntity {
         this.name = name;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "season_id")
+    
     public Season getSeason() {
         return season;
     }

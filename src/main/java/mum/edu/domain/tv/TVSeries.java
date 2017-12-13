@@ -23,11 +23,11 @@ public class TVSeries extends AbstractTV{
     private static final long serialVersionUID = 1L;
 
    
-    private List<Season> seasons = new ArrayList<Season>();
-
     @OneToMany(cascade = CascadeType.ALL,
             fetch=FetchType.EAGER,
             mappedBy="series")
+    private List<Season> seasons = new ArrayList<Season>();
+
     public List<Season> getSeasons() {
         return seasons;
     }
@@ -48,7 +48,6 @@ public class TVSeries extends AbstractTV{
     }
     
     public TVSeries() {
-        // TODO Auto-generated constructor stub
     }
 
 }

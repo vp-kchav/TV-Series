@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.ElementCollection;
@@ -15,6 +16,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -40,20 +42,38 @@ public class AbstractTV extends AbstractLongEntity {
     
     private int rating;
     
-    private Studio studio;
-
-    private List<Artist> casts = new ArrayList<Artist>();
-    
-    private List<String> comments = new ArrayList<String>();
-    
-
-    private List<String> genres = new ArrayList<String>();
-    
-    
-    private Director director;
-    
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "studio_id")
+    private Studio studio;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinColumn(name="tv_id")
+    private List<Artist> casts = new ArrayList<Artist>();
+    
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> comments = new ArrayList<String>();
+    
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> genres = new ArrayList<String>();
+    
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "director_id")
+    private Director director;
+    
+    @Lob
+    @Column(length = 16777215) // 10 MB 
+    private byte[] picture;
+    
+    
+    public byte[] getPicture() {
+        return picture;
+    }
+
+    
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
+    }
+
     public Studio getStudio() {
         return studio;
     }
@@ -62,7 +82,7 @@ public class AbstractTV extends AbstractLongEntity {
         this.studio = studio;
     }
     
-    @ElementCollection
+    
     public List<String> getComments() {
         return comments;
     }
@@ -88,8 +108,7 @@ public class AbstractTV extends AbstractLongEntity {
         this.descirption = descirption;
     }
     
-    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-    @JoinColumn(name="tv_id")
+    
     public List<Artist> getCasts() {
         return casts;
     }
@@ -98,7 +117,6 @@ public class AbstractTV extends AbstractLongEntity {
         this.casts = casts;
     }
     
-    @ElementCollection(fetch = FetchType.EAGER)
     public List<String> getGenres() {
         return genres;
     }
@@ -115,8 +133,6 @@ public class AbstractTV extends AbstractLongEntity {
         this.rating = rating;
     }
     
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "director_id")
     public Director getDirector() {
         return director;
     }

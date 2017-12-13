@@ -19,8 +19,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import mum.edu.constant.Constant;
+import mum.edu.domain.dto.MovieDto;
 import mum.edu.domain.dto.SearchDto;
+import mum.edu.domain.person.Artist;
+import mum.edu.domain.person.Director;
 import mum.edu.domain.tv.AbstractTV;
+import mum.edu.domain.tv.Movie;
+import mum.edu.factory.MovieFactory;
+import mum.edu.services.ArtistService;
+import mum.edu.services.DirectorService;
 import mum.edu.services.MoviesService;
 
 @Controller
@@ -28,6 +35,10 @@ public class MovieController {
 
     @Autowired 
     MoviesService moviesService;
+    @Autowired
+    DirectorService directorService;
+    @Autowired
+    ArtistService artistService;
     
     public MovieController() {
         // TODO Auto-generated constructor stub
@@ -62,12 +73,18 @@ public class MovieController {
     }
     
    @GetMapping(value= "/addmovies")
-   public String addMoviesView(@ModelAttribute("newMovie") AbstractTV movie,Model model) {
+   public String addMoviesView(@ModelAttribute("newMovie") MovieDto movie,Model model) {
+       List<Director> directors = directorService.getAll();
+       List<Artist> artists = artistService.getAll();
+       model.addAttribute("directors",directors);
+       model.addAttribute("artists",artists);
        return "addmovies";
    }
 
    @PostMapping(value="/saveMovie")
-   public String saveMovie(@Valid @ModelAttribute("newMovie") AbstractTV movie,BindingResult result,Model model ) {
+   public String saveMovie(@Valid @ModelAttribute("newMovie") MovieDto movieDto,BindingResult result,Model model ) {
+       Movie movie = MovieFactory.getInstance().createMovieFromDto(movieDto);
+       moviesService.save(movie);
        return "redirect:/addmovies";
    }
 }

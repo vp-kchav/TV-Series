@@ -23,9 +23,14 @@ public abstract class AbstractLongEntity implements Entity<Long> {
      */
     private static final long serialVersionUID = 1L;
 
-    private int _entityVersion = 1;
+    @Version
+    @Column(name = "entity_version", columnDefinition = "int default 1")
+    private int entityVersion = 1;
    
-    private Long _id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    
 
     /**
      * Constructeur.
@@ -37,17 +42,15 @@ public abstract class AbstractLongEntity implements Entity<Long> {
     /**
      * {@inheritDoc}
      */
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
-        return _id;
+        return id;
     }
 
     /**
      * {@inheritDoc}
      */
     public void setId(final Long id) {
-        _id = id;
+        this.id = id;
     }
 
     /**
@@ -66,10 +69,8 @@ public abstract class AbstractLongEntity implements Entity<Long> {
     /**
      * @return the entity version
      */
-    @Version
-    @Column(name = "entity_version", columnDefinition = "int default 1")
     public int getEntityVersion() {
-        return _entityVersion;
+        return entityVersion;
     }
 
     /**
@@ -77,7 +78,7 @@ public abstract class AbstractLongEntity implements Entity<Long> {
      *            the entity version to set
      */
     public void setEntityVersion(final int entityVersion) {
-        _entityVersion = entityVersion;
+        this.entityVersion = entityVersion;
     }
 
 }
