@@ -48,7 +48,7 @@
 							</div>
 							<div class="form-group row" id="addImg">
 								<div class="col-lg-12">
-									<form:input id="addImg" path="image" type="file" multiple="multiple" required="required"/>
+									<form:input id="addImg" path="image" type="file" />
 								</div>
 							</div>
 <!-- 							<div class="col-lg-12"> -->

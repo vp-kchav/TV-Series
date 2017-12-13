@@ -23,7 +23,7 @@
 <!-- 		<intercept-url pattern="/" access="permitAll" /> -->
         <form-login login-page="/login" username-parameter="name"
         					 password-parameter="password" authentication-failure-url="/loginError"   />
-        <csrf disabled="true"/>
+        <csrf />
          <remember-me
         remember-me-parameter="remember-me"
         remember-me-cookie="remember-me"

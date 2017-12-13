@@ -20,12 +20,14 @@ import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.servlet.annotation.MultipartConfig;
 
 import mum.edu.domain.AbstractLongEntity;
 import mum.edu.domain.person.Artist;
 import mum.edu.domain.person.Director;
 
 @Entity
+@MultipartConfig
 @Table(name = "TVSeries")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "Type", discriminatorType = DiscriminatorType.STRING)
