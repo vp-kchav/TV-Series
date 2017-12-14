@@ -20,6 +20,7 @@ import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.servlet.annotation.MultipartConfig;
 
 import mum.edu.domain.AbstractLongEntity;
@@ -37,6 +38,9 @@ public class AbstractTV extends AbstractLongEntity {
      * 
      */
     private static final long serialVersionUID = 1L;
+    
+    @Transient
+    private String base64Image;
     
     private String name;
     
@@ -66,6 +70,13 @@ public class AbstractTV extends AbstractLongEntity {
     @Column(length = 16777215) // 10 MB 
     private byte[] picture;
     
+    public String getBase64Image() {
+        return base64Image;
+    }
+
+    public void setBase64Image(String base64Image) {
+        this.base64Image = base64Image;
+    }
     
     public byte[] getPicture() {
         return picture;

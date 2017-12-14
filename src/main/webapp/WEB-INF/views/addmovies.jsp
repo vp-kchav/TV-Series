@@ -48,60 +48,9 @@
 							</div>
 							<div class="form-group row" id="addImg">
 								<div class="col-lg-12">
-									<form:input id="addImg" path="image" type="file" />
+									<form:input id="addImg" path="image" type="file" required="required" />
 								</div>
 							</div>
-<!-- 							<div class="col-lg-12"> -->
-<%-- 								<form:select  class="form-control" items="${artists}" path="casts.id" itemLabel="name" itemValue="id"/> --%>
-<!-- 							</div> -->
-						</div>
-<!-- 						<div class="form-group"> -->
-<%-- 							<form:select  class="form-control" items="${roles}" path="role.id" itemLabel="roleName" itemValue="id"/> --%>
-<!-- 						</div> -->
-						
-<!-- 						<div class="form-group"> -->
-<%-- 							<spring:message code="user.email" text="Email:" var="email"/>  --%>
-<%-- 							<form:input  class="form-control" placeholder="${email}"  path="email" /> --%>
-<%-- 							<form:errors path="email"/> --%>
-<!-- 						</div> -->
-						
-<!-- 						<div class="form-group"> -->
-<%-- 							<spring:message code="user.password" text="Password:" var="password"/> --%>
-<%-- 							<form:input type="password"  class="form-control" placeholder="${password}" path="password"/> --%>
-<%-- 							<form:errors path="password"/> --%>
-<!-- 						</div> -->
-						
-<!-- 						<div class="form-group"> -->
-<%-- 							<spring:message code="user.mobile" text="Mobile:" var="mobile"/> --%>
-<%-- 							<form:input class="form-control" placeholder="${mobile}" path="mobile" /> --%>
-<%-- 							<form:errors path="mobile"/> --%>
-<!-- 						</div> -->
-						
-						<%-- <div class="form-group">
-							<form:input type="password" class="form-control" placeholder="Confirm Password" path="confirm_password"
-								required="required"/>
-						</div> --%>
-						
-<!-- 						<div class="form-group"> -->
-<%-- 							<spring:message code="address.street" text="Street:" var="street"/> --%>
-<%-- 							<form:input class="form-control"  placeholder="${street}" path="address.street"/> --%>
-<%-- 							<form:errors path="address.street"/> --%>
-<!-- 						</div> -->
-<!-- 						<div class="form-group"> -->
-<%-- 							<spring:message code="address.city" text="City:" var="city"/> --%>
-<%-- 							<form:input  class="form-control"  placeholder="${city}" path="address.city"/> --%>
-<%-- 							<form:errors path="address.city"/> --%>
-<!-- 						</div> -->
-<!-- 						<div class="form-group"> -->
-<%-- 							<spring:message code="address.state" text="State:" var="state"/> --%>
-<%-- 							<form:input  class="form-control" placeholder="${state}" path="address.state"/> --%>
-<%-- 							<form:errors path="address.state"/> --%>
-<!-- 						</div> -->
-<!-- 							<div class="form-group"> -->
-<%-- 							<spring:message code="address.zipcode" text="Zipcode:" var="zipcode"/> --%>
-<%-- 							<form:input class="form-control"  placeholder="${zipcode}" path="address.zipcode"/> --%>
-<%-- 							<form:errors path="address.zipcode"/> --%>
-<!-- 						</div> -->
 						<button type="submit" class="btn btn-success" name="Submit"><spring:message code="form.movie.add" text="Add Movie"/></button>
 					</form:form>
 				</div>

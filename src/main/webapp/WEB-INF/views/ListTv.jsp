@@ -88,18 +88,18 @@
 									<!-- properties -->
 									<div class="col-lg-4 col-sm-6">
 										<div class="properties">
-											<c:if test="${movie.getClass().simpleName == 'TVSeries'}">
+<%-- 											<c:if test="${movie.getClass().simpleName == 'TVSeries'}"> --%>
+<!-- 											<div class="image-holder"> -->
+<%-- 												<img src="<c:url value="/resources/images/movie1.jpg"/>" --%>
+<!-- 													class="img-responsive" alt="movies"> -->
+<!-- 											</div> -->
+<%-- 											</c:if> --%>
+<%-- 											<c:if test="${movie.getClass().simpleName == 'Movie'}"> --%>
 											<div class="image-holder">
-												<img src="<c:url value="/resources/images/movie1.jpg"/>"
+												<img src="data:image/jpeg;base64,${movie.base64Image}"
 													class="img-responsive" alt="movies">
 											</div>
-											</c:if>
-											<c:if test="${movie.getClass().simpleName == 'Movie'}">
-											<div class="image-holder">
-												<img src="<c:url value="/resources/images/movie2.jpg"/>"
-													class="img-responsive" alt="movies">
-											</div>
-											</c:if>
+<%-- 											</c:if> --%>
 											<p><strong>${movie.getClass().simpleName}</strong></p>
 											<h4>
 <%-- 												<a href="<c:url value="/property/propertyList?id=${property.id}"/>"></a> --%>

@@ -34,7 +34,7 @@ public class MovieFactory {
          // isEmpty means file exists BUT NO Content
          if (dto.getImage() != null) {
              try {
-//                 movie.setPicture(dto.getImage().getBytes());
+                 movie.setPicture(dto.getImage().getBytes());
              } catch (Exception e) {
                  System.out.println("Unable to save image ");
              }
