@@ -3,6 +3,7 @@
  */
 package mum.edu.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +25,7 @@ import mum.edu.domain.tv.Episode;
 import mum.edu.domain.tv.Movie;
 import mum.edu.domain.tv.Season;
 import mum.edu.domain.tv.TVSeries;
+import mum.edu.factory.MovieFactory;
 import mum.edu.services.MoviesService;
 import mum.edu.services.TvSeriesService;
 
@@ -47,6 +49,12 @@ public class HomeController {
 //        deployData();
 //        deployDataMovie();
         List<AbstractTV> listMovies = moviesService.getAll();
+        try {
+            MovieFactory.getInstance().addConvertedImage(listMovies);
+        }
+        catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         model.addAttribute("listMovies",listMovies);
         return "ListTv";
     }

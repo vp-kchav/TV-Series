@@ -9,7 +9,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.codec.Base64;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -64,7 +63,7 @@ public class MovieController {
             listMovies=moviesService.findByArtist(textSearch);
         }
         try {
-            addConvertImage(listMovies);
+            MovieFactory.getInstance().addConvertedImage(listMovies);
         }
         catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -92,18 +91,6 @@ public class MovieController {
        Movie movie = MovieFactory.getInstance().createMovieFromDto(movieDto);
        moviesService.save(movie);
        return "redirect:/addmovies";
-   }
-   
-   public void addConvertImage(List<AbstractTV> movies) throws UnsupportedEncodingException {
-       for(AbstractTV movie: movies) {
-           if(movie.getPicture() != null) {
-               byte[] bytes = movie.getPicture();
-               byte[] encodeBase64 = Base64.encode(bytes);
-               String base64Encoded = new String(encodeBase64, "UTF-8");
-               movie.setBase64Image(base64Encoded);
-           }
-       }
-//       return movies;
    }
    
 }
