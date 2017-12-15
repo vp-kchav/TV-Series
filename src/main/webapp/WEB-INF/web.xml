@@ -9,7 +9,7 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				/WEB-INF/spring/DispatcherServlet-context.xml
+				classpath*:**/spring/DispatcherServlet-context.xml
 			</param-value>
 		</init-param>
 	</servlet>
@@ -20,8 +20,8 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-    			/WEB-INF/spring/DispatcherServlet-context.xml
-    			/WEB-INF/spring/spring-security.xml
+    			classpath*:**/spring/DispatcherServlet-context.xml
+    			classpath*:**/spring/spring-security.xml
          </param-value>
 	</context-param>
 <!-- 	<filter> -->
