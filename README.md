@@ -1,4 +1,5 @@
 # TV-Series
+This project using Spring Framework, JPA , Srping Security ,etc.
 Goal: To create a website similar to www.imdb.com for TV series only; where the users will be able to:
 
 1- See information about TV Series
